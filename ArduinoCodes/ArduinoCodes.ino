@@ -1,20 +1,23 @@
 #include <ESP8266WiFi.h>
 #include <FirebaseESP8266.h>
+#include <SoftwareSerial.h>
 
 // Firebase bağlantısı için gerekli bilgiler
 #define FIREBASE_HOST "https://dprinter-control-default-rtdb.europe-west1.firebasedatabase.app/"
 #define FIREBASE_AUTH "26063e9e42d9cef3b3b6ce72b693b0b2c95b19c2"
-
+#define RX_PIN 13 //  pin on NodeMCU
+#define TX_PIN 15 //  pin on NodeMCU
 // WiFi ağı için gerekli bilgiler
 const char* WIFI_SSID = "Millenicom_9E6A";
 const char* WIFI_PASSWORD = "C0C9E3619E6A";
-
+SoftwareSerial rampsSerial(RX_PIN, TX_PIN);
 // Firebase nesnesi tanımlama
 FirebaseData firebaseData;
 
 void setup() {
   Serial.begin(115200);
   delay(10);
+   rampsSerial.begin(115200);
 
   // WiFi ağına bağlanma
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
@@ -32,6 +35,9 @@ void setup() {
 }
 
 void loop() {
+   rampsSerial.println("M105");
+  Serial.println("nodemcu");
+  delay(2000);
   // Rastgele double değerler üretme
   double  table_temperature = random(59, 62) ;
   double nozzle_temperature = random(204, 210) ;
@@ -50,4 +56,8 @@ void loop() {
   Firebase.setDouble(firebaseData, "example-data/y_position", y_position);
   Firebase.setDouble(firebaseData, "example-data/z_position", z_position);
   delay(5000);
+  while (rampsSerial.available() > 0) {
+    char incomingByte = rampsSerial.read();
+    Serial.print(incomingByte); // Print the response to the computer's serial monitor
+  }
  }
