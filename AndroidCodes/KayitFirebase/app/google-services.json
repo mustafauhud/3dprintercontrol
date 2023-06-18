@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1030955118004",
+    "project_id": "nesnetez-5e48c",
+    "storage_bucket": "nesnetez-5e48c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1030955118004:android:4ce51638fd93a7906816e1",
+        "android_client_info": {
+          "package_name": "com.example.kayitfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1030955118004-5h5jkvb93t0hnfnb619d3cvkc77mmu84.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDi-51zvniMZlqLIl4SruwSSNZ0EcR7Yes"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1030955118004-5h5jkvb93t0hnfnb619d3cvkc77mmu84.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
